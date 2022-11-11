@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: docker/Dockerfile
     container_name: sshuttle
-    #restart: unless-stopped
+    restart: unless-stopped
     # Read documentation to get more at: https://sshuttle.readthedocs.io/en/stable/usage.html
     environment:
       # Use to create reverese tunnels (multiple if you want)
