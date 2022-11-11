@@ -7,8 +7,8 @@ This repository is made to Dockerize sshuttle and run it via docker-compose.
 ## How it works
 Let's assume we have a `SERVER` which is behind the firewall and we want to route all it's traffic through `JUMP SERVER`
 
-### First of all create a `docker-compose.yml` file on your server, e.g.:
-ON YOUR MACHINE WHICH IS BEHIND THE FIREWALL
+### First of all create a `docker-compose.yml`, e.g.:
+ON YOUR SERVER WHICH IS BEHIND THE FIREWALL
 ```sh
 cd /
 mkdir service.sshuttle
@@ -18,7 +18,7 @@ vim docker-compose.yml
 ```
 
 ### Now generate ssh-key
-ON YOUR MACHINE WHICH IS BEHIND THE FIREWALL
+ON YOUR SERVER WHICH IS BEHIND THE FIREWALL
 ```sh
 mkdir ssh-key
 ssh-keygen -t rsa -f /service.sshuttle/ssh-key -q -P ""
@@ -26,7 +26,7 @@ ssh-keygen -t rsa -f /service.sshuttle/ssh-key -q -P ""
 
 > This ssh-key is needed to connect to your JUMP SERVER where all traffic will be routed through, we will authenticate by PublicKeyAuthentication
 
-### On your JUMP SERVER add public key to `authorized_keys` file
+### Add public key to `authorized_keys` file
 ON YOUR JUMP SERVER
 ```sh
 vim ~/.ssh/authorized_keys
