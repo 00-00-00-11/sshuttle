@@ -21,7 +21,7 @@ vim docker-compose.yml
 ON YOUR SERVER WHICH IS BEHIND THE FIREWALL
 ```sh
 mkdir ssh-key
-ssh-keygen -t rsa -f /service.sshuttle/ssh-key -q -P ""
+ssh-keygen -t rsa -f /service.sshuttle/ssh-key/id_rsa -q -P ""
 ```
 
 > This ssh-key is needed to connect to your JUMP SERVER where all traffic will be routed through, we will authenticate by PublicKeyAuthentication
