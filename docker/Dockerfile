@@ -1,9 +1,9 @@
 FROM alpine:3.16
 
 # Install packages
-RUN apk add git python3 openssh && \
-    # Generate ssh key (this is only needed to create ~/.ssh folder with correct permissions)
-    ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -P "" && \
+RUN apk add git python3 openssh iptables && \
+    # Create ~/.ssh directory and ssh config
+    mkdir -p /root/.ssh && chmod 700 /root/.ssh && echo -e "Host *\n\tStrictHostKeyChecking no\n" > ~/.ssh/config && \
     # Configure python
     ln -sf python3 /usr/bin/python && python3 -m ensurepip && pip3 install --no-cache --upgrade pip setuptools && \
     # Configure nameserver

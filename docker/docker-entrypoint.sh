@@ -6,5 +6,5 @@ then
     exec "$@"
 else
     # Execute sshuttle
-    exec /usr/bin/sshuttle $SSHUTTLE_ARGS
+    exec /usr/bin/sshuttle -e "$SSH_ARGS" $SSHUTTLE_ARGS
 fi

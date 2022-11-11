@@ -7,9 +7,12 @@ services:
       dockerfile: docker/Dockerfile
     container_name: sshuttle
     #restart: unless-stopped
+    # Read documentation to get more at: https://sshuttle.readthedocs.io/en/stable/usage.html
     environment:
-      # Read documentation to get more at: https://sshuttle.readthedocs.io/en/stable/usage.html
-      - SSHUTTLE_ARGS=-x 192.168.0.0/16 --dns -r root@206.189.154.79:3785 0/0
+      # Use to create reverese tunnels (multiple if you want)
+      # 2222 will be opened on you JUMP SERVER 50022 will be forwarded to 2222
+      - SSH_ARGS=ssh -R 2222:localhost:50022 -R 8000:localhost:6556
+      - SSHUTTLE_ARGS=--disable-ipv6 -x 192.0.0.0/8 -x 172.0.0.0/8 --dns -r root@YOURSERVER:SERVERPORT 0/0
     volumes:
       - ./ssh-key/id_rsa:/root/.ssh/id_rsa:ro
       - ./ssh-key/id_rsa.pub:/root/.ssh/id_rsa.pub:ro
